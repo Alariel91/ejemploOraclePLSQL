@@ -11,7 +11,18 @@ public class Principal {
 	static SentenciasSQL conexion =new SentenciasSQL();
 	static ResultSet rs ;
 	public static void main(String[] args) {
-		
+		/*
+		Procedimiento utilizando cursor
+		create or replace PROCEDURE procursor(cursorParam OUT SYS_REFCURSOR)
+			IS
+			BEGIN
+ 
+  			OPEN cursorParam FOR
+  			SELECT * FROM APARCAMIENTO_ACCESOS;
+ 
+			END;
+			/
+	*/
 		conexion.conectarBBDD();
 		String procursor= "{call procursor(?)}";
 		
@@ -45,23 +56,6 @@ public class Principal {
 		}
 		
 		conexion.closeBBDD();
-		/*
-		String mensaje= "{call mensajeBienvenida(?)}";
-		try {
-			cs = conexion.getConn().prepareCall(mensaje);
-			cs.registerOutParameter(1, java.sql.Types.VARCHAR);
-			cs.execute();
-			
-			String mensajerecogido= cs.getString(1);
-			System.out.println(mensajerecogido);
-			
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		}
-	*/
-		
-		
 
 	}
 	
